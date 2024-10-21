@@ -16,15 +16,15 @@ app.post("/events", (req, res) => {
   axios.post("http://posts-clusterip-srv:4000/events", event).catch(() => {
     console.log("Something wrong with 4000");
   });
-  // axios.post("http://localhost:4001/events", event).catch(() => {
-  //   console.log("Something wrong with 4001");
-  // });
-  // axios.post("http://localhost:4002/events", event).catch(() => {
-  //   console.log("Something wrong with 4002");
-  // });
-  // axios.post("http://localhost:4003/events", event).catch(() => {
-  //   console.log("Something wrong with 4003");
-  // });
+  axios.post("http://comments-srv:4001/events", event).catch(() => {
+    console.log("Something wrong with 4001");
+  });
+  axios.post("http://query-srv:4002/events", event).catch(() => {
+    console.log("Something wrong with 4002");
+  });
+  axios.post("http://moderate-srv:4003/events", event).catch(() => {
+    console.log("Something wrong with 4003");
+  });
 
   res.status(201).send({ status: "OK" });
 });
